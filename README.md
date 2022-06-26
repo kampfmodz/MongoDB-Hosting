@@ -5,7 +5,7 @@
   <img src="https://img.shields.io/nuget/dt/MongoDB-Hosting?style=plastic" width="100" /> 
 </p>
 
-Simple Library to use MongoDB with DI.
+Simple Library to use MongoDB with DI. [Nuget-Link](https://www.nuget.org/packages/MongoDB-Hosting)
 
 ## Example
 
