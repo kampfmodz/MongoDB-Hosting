@@ -1,5 +1,10 @@
 # MongoDB-Hosting
 
+<p float="left">
+  <img src="https://img.shields.io/nuget/vpre/MongoDB-Hosting?style=plastic" width="100" />
+  <img src="https://img.shields.io/nuget/dt/MongoDB-Hosting?style=plastic" width="100" /> 
+</p>
+
 Simple Library to use MongoDB with DI.
 
 ## Example
