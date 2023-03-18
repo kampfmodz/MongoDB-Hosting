@@ -3,7 +3,6 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using MongoDB.Driver;
 using MongoDBHosting;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -31,8 +30,9 @@ namespace MongoDBHosting
             foreach(var assembly in assemblys)
             {
                 var types = assembly.GetTypes().Where(f =>
-                    f.BaseType != null &&
-                    f.BaseType.GetGenericTypeDefinition() == typeof(CollectionExtention<>));
+                    typeof(IDatabaseCollection).IsAssignableFrom(f) &&
+                    f.IsClass &&
+                    !f.IsAbstract);
 
                 collections.AddRange(types);
             }

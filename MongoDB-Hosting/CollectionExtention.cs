@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MongoDBHosting
 {
-    public abstract class CollectionExtention<T>
+    public abstract class CollectionExtention<T> : IDatabaseCollection
     {
         protected IMongoCollection<T> Collection { get; }
 
@@ -36,4 +36,6 @@ namespace MongoDBHosting
                 return CollectionName;
         }
     }
+
+    public interface IDatabaseCollection { }
 }

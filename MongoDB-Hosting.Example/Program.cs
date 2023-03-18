@@ -6,7 +6,7 @@ using MongoDBHosting;
 var builder = Host.CreateDefaultBuilder();
 builder.ConfigureServices(services =>
 {
-    services.AddMongoService("YourMongoUri");
+    services.AddMongoService("mongodb://localhost:27017/");
     services.AddSingleton<Random>();
 
     services.AddHostedService<ExampleService>();
