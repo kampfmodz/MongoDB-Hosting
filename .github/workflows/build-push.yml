@@ -39,6 +39,9 @@ jobs:
     - name: Restore dependencies
       run: nuget restore
 
+    - name: Install dependencies
+      run: dotnet restore
+      
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
