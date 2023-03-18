@@ -12,6 +12,7 @@
     <RepositoryUrl>https://github.com/kampfmodz/MongoDB-Hosting</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>DI;Asp.Net;Asp.Net Core;MongoDB;Database</PackageTags>
+    <Title>MongoDb Dependenci Injection</Title>
   </PropertyGroup>
 
   <ItemGroup>

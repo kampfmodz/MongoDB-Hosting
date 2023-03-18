@@ -9,33 +9,35 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.Extensions.DependencyInjection
+namespace MongoDBHosting
 {
-    public static partial class ServiceDiscoveryExtension
+    public static class ServiceDiscoveryExtension
     {
         public static IServiceCollection AddMongoService(this IServiceCollection services, string MongoUri)
         {
             services.TryAddSingleton(new MongoClient(MongoUri));
-            RegisterCollections(ref services);
+            var collections = RegisterCollections();
+
+            collections.ForEach(c => services.AddSingleton(c));
+
             return services;
         }
 
-        private static void RegisterCollections(ref IServiceCollection services)
-        {            
-            foreach(var type in Assembly.GetEntryAssembly().GetTypes()) 
-            {
-                if (type.BaseType == null)
-                    continue;
+        private static List<Type> RegisterCollections()
+        {
+            var collections = new List<Type>();
+            var assemblys = AppDomain.CurrentDomain.GetAssemblies();
 
-                try
-                {
-                    if (type.BaseType.GetGenericTypeDefinition() == typeof(CollectionBase<>))
-                    {
-                        services.TryAddSingleton(type);
-                    }
-                }
-                catch { }
+            foreach(var assembly in assemblys)
+            {
+                var types = assembly.GetTypes().Where(f =>
+                    f.BaseType != null &&
+                    f.BaseType.GetGenericTypeDefinition() == typeof(CollectionExtention<>));
+
+                collections.AddRange(types);
             }
+
+            return collections;
         }
     }
 }

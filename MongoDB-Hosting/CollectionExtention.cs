@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MongoDBHosting
 {
-    public abstract class CollectionBase<T>
+    public abstract class CollectionExtention<T>
     {
         protected IMongoCollection<T> Collection { get; }
 
@@ -16,7 +16,7 @@ namespace MongoDBHosting
         /// </summary>
         /// <param name="client">MongoDB Client - gets injected</param>
         /// <param name="Database">Name of the database - gets NOT injected</param>
-        public CollectionBase(MongoClient client, string Database)
+        public CollectionExtention(MongoClient client, string Database)
         {
             IMongoDatabase mongoDatabase = client.GetDatabase(Database);
             string CollectionName = GetCollectionName(Database);

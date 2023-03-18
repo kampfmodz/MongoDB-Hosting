@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MongoDB_Hosting.Example
 {
-    public class RandomCollection : CollectionBase<RandomModel>
+    public class RandomCollection : CollectionExtention<RandomModel>
     {
         public RandomCollection(MongoClient client) : base(client, "Example") { }
 
